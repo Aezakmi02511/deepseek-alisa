@@ -7,6 +7,10 @@ app = FastAPI()
 DEEPSEEK_API_URL = "https://api.deepseek.com/v1/chat/completions"
 DEEPSEEK_API_KEY = os.getenv("DEEPSEEK_API_KEY")
 
+@app.get("/")
+async def get_root():
+    return {"message": "Сервер работает, но навык использует POST запросы. Используйте POST для общения."}
+
 @app.post("/")
 async def main(request: Request):
     body = await request.json()
